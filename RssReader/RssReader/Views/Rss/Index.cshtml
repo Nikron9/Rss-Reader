@@ -1,0 +1,30 @@
+﻿@using RssReader.Models
+@model IEnumerable<RssReader.Models.RssModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@functions
+{
+
+    static IEnumerable<IEnumerable<T>> Split<T>(IEnumerable<T> rssList, int columns)
+    {
+        var x = new List<List<T>>();
+        for (int i = 0; i < rssList.Count(); i+=2)
+        {
+            for (int i = 0; i < x; i++)
+            {
+                x.Add(rssList[i]);
+                x.Add(rssList[i + 1]); 
+            }
+        }
+        return x;
+    }
+
+}
+
+<div class=""></div>
+
