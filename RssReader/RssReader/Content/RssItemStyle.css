@@ -1,0 +1,20 @@
+﻿.rssItemTitle {
+    padding: 10px;
+    text-align: center;
+}
+
+.rssItemDate { text-align: right; }
+
+.rssItemDescription { padding: 10px; }
+
+.rssItem {
+    background: gainsboro;
+    margin-bottom: 20px;
+}
+
+.row { overflow: hidden; }
+
+[class*="col-"] {
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}

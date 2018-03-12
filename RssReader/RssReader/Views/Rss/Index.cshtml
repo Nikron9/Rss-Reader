@@ -1,30 +1,48 @@
-﻿@using RssReader.Models
-@model IEnumerable<RssReader.Models.RssModel>
+﻿@model IEnumerable<RssReader.Models.RssModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Rss</h2>
+
+<div>
+    @foreach (var row in Split(Model, 2))
+    {
+        <div class="row">
+            @foreach (var column in row)
+            {
+                <div class="col-md-6">
+                    <div class="rssItem">
+                        <div class="rssItemTitle">
+                            <h3>
+                                @column.Title
+                            </h3>
+                        </div>
+                        <div class="rssItemDescription">
+                            @Html.Raw(column.Description)
+                            <div class="rssItemDate">
+                                <p>
+                                    @column.Date
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
 
 @functions
 {
 
     static IEnumerable<IEnumerable<T>> Split<T>(IEnumerable<T> rssList, int columns)
     {
-        var x = new List<List<T>>();
-        for (int i = 0; i < rssList.Count(); i+=2)
+        for (var i = 0; i < (double) rssList.Count() / columns; i++)
         {
-            for (int i = 0; i < x; i++)
-            {
-                x.Add(rssList[i]);
-                x.Add(rssList[i + 1]); 
-            }
+            yield return rssList.Skip(i * columns).Take(columns);
         }
-        return x;
     }
 
 }
-
-<div class=""></div>
-
