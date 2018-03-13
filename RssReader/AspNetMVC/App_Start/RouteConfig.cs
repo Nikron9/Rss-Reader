@@ -12,7 +12,7 @@ namespace AspNetMVC
             routes.MapRoute(
                 "Default",
                 "{controller}/{action}/{id}",
-                new {controller = "Rss", action = "Index", id = UrlParameter.Optional}
+                new {controller = "Rss", action = "Index", id = UrlParameter.Optional},new string[] {"AspNetMVC.Controllers.RssController"}
             );
         }
     }
