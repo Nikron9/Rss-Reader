@@ -1,12 +1,33 @@
-﻿@model IEnumerable<RssModel>
+﻿@model Pagination<RssModel>
 
 @{
     ViewBag.Title = "Index";
 }
+@{
 
-<h2>Rss</h2>
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    var titleToSearch = ViewBag.titleToSearch;
+    var pageSize = ViewBag.pageSize;
+}
 
-<div>
+<div class="row">
+    <h1>Rss Reader</h1>
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12">
+                Szukaj po tytule: @Html.TextBox("titleToSearch")
+                <input type="submit" value="Szukaj"/>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-12 text-right">
+                Ilość elementów na stronie: @Html.TextBox("pageSize")
+                <input type="submit" value="Zmień"/>
+            </div>
+        </div>
+    }
+
+
     @foreach (var row in Split(Model, 2))
     {
         <div class="row">
@@ -30,6 +51,8 @@
             }
         </div>
     }
+    <a asp-action="Index" asp-route-page="@(Model.PageIndex + 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" class="btn btn-default pull-right @nextDisabled"> Następna </a>
+    <a asp-action="Index" asp-route-page="@(Model.PageIndex - 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" class="btn btn-default pull-right @prevDisabled"> Poprzednia </a>
 </div>
 
 @functions
