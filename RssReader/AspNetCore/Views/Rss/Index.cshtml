@@ -1,0 +1,46 @@
+﻿@model IEnumerable<RssModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Rss</h2>
+
+<div>
+    @foreach (var row in Split(Model, 2))
+    {
+        <div class="row">
+            @foreach (var column in row)
+            {
+                <div class="col-md-6">
+                    <div class="rssItem">
+                            <h3 class="rssItemTitle">
+                                @column.Title
+                            </h3>
+                        <div class="rssItemDescription">
+                            @Html.Raw(column.Description)
+                            <div class="rssItemDate">
+                                <p>
+                                    @column.Date
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@functions
+{
+
+    static IEnumerable<IEnumerable<T>> Split<T>(IEnumerable<T> rssList, int columns)
+    {
+        for (var i = 0; i < (double) rssList.Count() / columns; i++)
+        {
+            yield return rssList.Skip(i * columns).Take(columns);
+        }
+    }
+
+}
