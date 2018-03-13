@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace RssReader
+namespace AspNetMVC
 {
     public class BundleConfig
     {
@@ -25,7 +25,7 @@ namespace RssReader
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/site.css",
-                "~/Content/rssitemstyle.css"));
+                "~/Content/rssStyle.css"));
         }
     }
 }

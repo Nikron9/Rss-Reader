@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace RssReader
+namespace AspNetMVC
 {
     public class FilterConfig
     {

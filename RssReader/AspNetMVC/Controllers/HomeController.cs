@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace RssReader.Controllers
+namespace AspNetMVC.Controllers
 {
     public class HomeController : Controller
     {

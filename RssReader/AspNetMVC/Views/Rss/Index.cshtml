@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RssReader.Models.RssModel>
+﻿@model IEnumerable<AspNetMVC.Models.RssModel>
 
 @{
     ViewBag.Title = "Index";
@@ -14,11 +14,9 @@
             {
                 <div class="col-md-6">
                     <div class="rssItem">
-                        <div class="rssItemTitle">
-                            <h3>
-                                @column.Title
-                            </h3>
-                        </div>
+                        <h3 class="rssItemTitle">
+                            @column.Title
+                        </h3>
                         <div class="rssItemDescription">
                             @Html.Raw(column.Description)
                             <div class="rssItemDate">

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Xml.Linq;
-using RssReader.Models;
+using AspNetMVC.Models;
 
-namespace RssReader.Controllers
+namespace AspNetMVC.Controllers
 {
     public class RssController : Controller
     {

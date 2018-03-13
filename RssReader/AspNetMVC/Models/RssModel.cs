@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RssReader.Models
+namespace AspNetMVC.Models
 {
     public class RssModel
     {

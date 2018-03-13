@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace RssReader
+namespace AspNetMVC
 {
     public class RouteConfig
     {

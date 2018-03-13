@@ -1,5 +1,6 @@
 ﻿.rssItemTitle {
-    padding: 10px;
+    font-weight: bold;
+    padding-top: 20px;
     text-align: center;
 }
 
