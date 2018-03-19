@@ -4,11 +4,10 @@
     ViewBag.Title = "Index";
 }
 @{
-
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-    var titleToSearch = ViewBag.titleToSearch;
-    var pageSize = ViewBag.pageSize;
+    var pageSize = Model.PageSize;
+    var titleToSearch = Model.TitleToSearch;
 }
 
 <div class="row">
@@ -28,7 +27,7 @@
     }
 
 
-    @foreach (var row in Split(Model, 2))
+    @foreach (var row in Split(Model.RMList, 2))
     {
         <div class="row">
             @foreach (var column in row)

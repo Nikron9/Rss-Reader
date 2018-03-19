@@ -4,28 +4,28 @@ using System.Linq;
 
 namespace AspNetCore.Models
 {
-    public class Pagination<T> : List<T>
+    public class Pagination<T>
     {
-        public Pagination(IEnumerable<T> items, int count, int pageIndex, int pageSize)
+        public List<T> RMList { get; set; }
+        public int PageSize { get; set; }
+        public int PageIndex { get; set; }
+        public int TotalPages { get; set; }
+        public bool HasPreviousPage { get; set; }
+        public bool HasNextPage { get; set; }
+        public string TitleToSearch { get; set; }
+
+        public static Pagination<T> Create(List<T> rmList, int pageSize, int pageIndex, string titleToSearch)
         {
-            PageIndex = pageIndex;
-            TotalPages = (int) Math.Ceiling(count / (double) pageSize);
-
-            AddRange(items);
-        }
-
-        public int PageIndex { get; }
-        public int TotalPages { get; }
-
-        public bool HasPreviousPage => PageIndex > 1;
-
-        public bool HasNextPage => PageIndex < TotalPages;
-
-        public static Pagination<T> Create(IQueryable<T> source, int pageIndex, int pageSize)
-        {
-            var count = source.Count();
-            var items = source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
-            return new Pagination<T>(items, count, pageIndex, pageSize);
+            return new Pagination<T>
+            {
+                RMList = rmList.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList(),
+                PageSize = pageSize,
+                PageIndex = pageIndex,
+                TotalPages = (int) Math.Ceiling(rmList.Count / (double) pageSize),
+                HasNextPage = pageSize < (int) Math.Ceiling(rmList.Count / (double) pageSize),
+                HasPreviousPage = pageIndex > 1,
+                TitleToSearch = titleToSearch
+            };
         }
     }
 }
