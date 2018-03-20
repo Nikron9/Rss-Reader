@@ -7,6 +7,8 @@
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
     var pageSize = Model.PageSize;
+    var pageIndex = Model.PageIndex;
+    var totalPages = Model.TotalPages;
     var titleToSearch = Model.TitleToSearch;
 }
 
@@ -50,8 +52,88 @@
             }
         </div>
     }
-    <a asp-action="Index" asp-route-page="@(Model.PageIndex + 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" class="btn btn-default pull-right @nextDisabled"> Następna </a>
-    <a asp-action="Index" asp-route-page="@(Model.PageIndex - 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" class="btn btn-default pull-right @prevDisabled"> Poprzednia </a>
+</div>
+
+<div class="text-center">
+    <ul class="pagination">
+
+        <li class="@prevDisabled">
+            <a class="btn @prevDisabled" asp-action="Index" asp-route-page="@(Model.RMList.IndexOf(Model.RMList.FirstOrDefault()) + 2)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize">
+                <span>
+                    &laquo;
+                </span>
+            </a>
+        </li>
+
+        <li class="@prevDisabled">
+            <a class="btn @prevDisabled" asp-action="Index" asp-route-page="@(pageIndex - 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize">
+                <span>
+                    &lt;
+                </span>
+            </a>
+        </li>
+
+
+        @for (var i = 1; i <= totalPages; i++)
+        {
+            if (i == Model.PageIndex - 1)
+            {
+                <li>
+                    <a asp-action="Index" asp-route-page="@(pageIndex - 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize">
+                        @i
+                    </a>
+                </li>
+            }
+            if (i == pageIndex)
+            {
+                <li>
+                    <a asp-action="Index" asp-route-page="@(pageIndex)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize">
+                        @i
+                    </a>
+                </li>
+            }
+            if (i == pageIndex + 1)
+            {
+                <li>
+                    <a asp-action="Index" asp-route-page="@(pageIndex + 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize">
+                        @i
+                    </a>
+                </li>
+            }
+            if (i == pageIndex + 1 && i == 2)
+            {
+                <li>
+                    <a asp-action="Index" asp-route-page="@(pageIndex + 2)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize">
+                        @(i + 1)
+                    </a>
+                </li>
+            }
+            if (i == pageIndex - 2 && i == totalPages - 2)
+            {
+                <li>
+                    <a asp-action="Index" asp-route-page="@(pageIndex - 2)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize">
+                        @(i)
+                    </a>
+                </li>
+            }
+        }
+
+        <li class="@nextDisabled">
+            <a class="btn @nextDisabled" asp-action="Index" asp-route-page="@(pageIndex + 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize">
+                <span>
+                    &gt;
+                </span>
+            </a>
+        </li>
+
+        <li class="@nextDisabled">
+            <a class="btn @nextDisabled" asp-action="Index" asp-route-page="@(totalPages)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize">
+                <span>
+                    &raquo;
+                </span>
+            </a>
+        </li>
+    </ul>
 </div>
 
 @functions

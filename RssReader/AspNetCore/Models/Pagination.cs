@@ -22,7 +22,7 @@ namespace AspNetCore.Models
                 PageSize = pageSize,
                 PageIndex = pageIndex,
                 TotalPages = (int) Math.Ceiling(rmList.Count / (double) pageSize),
-                HasNextPage = pageSize < (int) Math.Ceiling(rmList.Count / (double) pageSize),
+                HasNextPage = pageIndex < (int) Math.Ceiling(rmList.Count / (double) pageSize),
                 HasPreviousPage = pageIndex > 1,
                 TitleToSearch = titleToSearch
             };
