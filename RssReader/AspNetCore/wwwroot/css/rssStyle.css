@@ -8,7 +8,10 @@
 
 .rssItemDate { text-align: right; }
 
-.rssItemDescription { padding: 20px; }
+.rssItemDescription {
+    overflow: auto;
+    padding: 20px;
+}
 
 .rssItem {
     background: gainsboro;
@@ -28,4 +31,15 @@
     border-radius: 10px;
     box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-right: 20px;
+}
+
+.rssLink { padding: 5px 0; }
+
+.rssLogoImage {
+    -webkit-filter: blur(1.5px);
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 97.5%;
 }

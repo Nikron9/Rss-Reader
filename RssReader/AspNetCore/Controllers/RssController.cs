@@ -1,32 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
-using AspNetCore.Models;
 using Microsoft.AspNetCore.Mvc;
+using RssLibrary;
+using RssLibrary.Models;
 
 namespace AspNetCore.Controllers
 {
     public class RssController : Controller
     {
-        // GET: Rss
-        private readonly IEnumerable<XElement> _rss =
-            XElement.Load("https://news.google.com/news/rss/?ned=pl_pl&gl=PL&hl=pl").Descendants("item");
-
-        public List<RssModel> RMList = new List<RssModel>();
-
-        public IActionResult Index(int? page, int? pageSize, string titleToSearch)
+        public IActionResult Index(Pagination model)
         {
-            foreach (var item in _rss)
-                RMList.Add(new RssModel(
-                    item.Element("title").Value,
-                    DateTime.Parse(item.Element("pubDate").Value),
-                    item.Element("description").Value));
+            if (Tools.RssItemsList == null)
+                Tools.LoadRssItemsList(model.LinkToRss ?? "https://news.google.com/news/rss/?ned=pl_pl&gl=PL&hl=pl");
 
-            if (!string.IsNullOrEmpty(titleToSearch))
-                RMList = RMList.Where(x => x.Title.ToLower().Contains(titleToSearch.ToLower())).ToList();
+            var rssItemsList = Tools.RssItemsList;
 
-            return View(Pagination<RssModel>.Create(RMList, pageSize ?? 4, page ?? 1, titleToSearch));
+            if (!string.IsNullOrEmpty(model.TitleToSearch))
+                rssItemsList = Tools.SearchByRssTitle(Tools.RssItemsList, model.TitleToSearch);
+
+            return View(new Pagination
+            {
+                LinkToRss = model.LinkToRss,
+                RssItemsList = rssItemsList.Skip((model.PageIndex - 1) * model.PageSize).Take(model.PageSize).ToList(),
+                PageSize = model.PageSize,
+                PageIndex = model.PageIndex,
+                TotalPages = (int) Math.Ceiling(rssItemsList.Count / (double) model.PageSize),
+                HasNextPage = model.PageIndex < (int) Math.Ceiling(rssItemsList.Count / (double) model.PageSize),
+                HasPreviousPage = model.PageIndex > 1,
+                TitleToSearch = model.TitleToSearch
+            });
+        }
+
+        [HttpPost]
+        public IActionResult Link(Pagination model)
+        {
+            Tools.LoadRssItemsList(model.LinkToRss);
+            return RedirectToAction(nameof(Index), model);
+        }
+
+        [HttpPost]
+        public IActionResult Paging(Pagination model)
+        {
+            return RedirectToAction(nameof(Index), model);
         }
     }
 }

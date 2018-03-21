@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore", "AspNetCore\As
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetMVC", "AspNetMVC\AspNetMVC.csproj", "{28745D8D-F436-4CF8-8DC2-CBA2FC97542A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssLibrary", "RssLibrary\RssLibrary.csproj", "{7AEBB3B8-E512-483D-AE4A-0505BD3F676F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{28745D8D-F436-4CF8-8DC2-CBA2FC97542A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28745D8D-F436-4CF8-8DC2-CBA2FC97542A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28745D8D-F436-4CF8-8DC2-CBA2FC97542A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AEBB3B8-E512-483D-AE4A-0505BD3F676F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AEBB3B8-E512-483D-AE4A-0505BD3F676F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AEBB3B8-E512-483D-AE4A-0505BD3F676F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AEBB3B8-E512-483D-AE4A-0505BD3F676F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

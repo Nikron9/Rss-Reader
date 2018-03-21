@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AspNetCore.Models
+namespace RssLibrary.Models
 {
     public class RssModel
     {
