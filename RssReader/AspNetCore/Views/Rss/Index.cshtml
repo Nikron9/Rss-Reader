@@ -1,5 +1,4 @@
 ﻿@using RssLibrary
-@using RssLibrary.Models
 @model RssLibrary.Models.Pagination
 
 @{
@@ -53,7 +52,12 @@
                     @Html.EditorFor(model => model.TitleToSearch, new {htmlattributes = new {@class = "form-control"}})
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-1">
-                    <input type="submit" value="Szukaj" class="btn" asp-action="Index" asp-route-pageIndex="@(rssItemsList.IndexOf(rssItemsList.FirstOrDefault()) + 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" asp-route-linkToRss="@linkToRss"/>
+                    <input type="submit" value="Szukaj" class="btn" 
+                           asp-action="Index" 
+                           asp-route-pageIndex="@(rssItemsList.IndexOf(rssItemsList.FirstOrDefault()) + 1)" 
+                           asp-route-titleToSearch="@titleToSearch" 
+                           asp-route-pageSize="@pageSize" 
+                           asp-route-linkToRss="@linkToRss"/>
                 </div>
             </div>
             <div class="col-md-6 col-xs-12">
@@ -64,7 +68,12 @@
                     @Html.EditorFor(model => model.PageSize, new {htmlattributes = new {@class = "form-control"}})
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-1">
-                    <input type="submit" value="Zmień" class="btn" asp-action="Index" asp-route-pageIndex="@(rssItemsList.IndexOf(rssItemsList.FirstOrDefault()) + 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" asp-route-linkToRss="@linkToRss"/>
+                    <input type="submit" value="Zmień" class="btn" 
+                           asp-action="Index" 
+                           asp-route-pageIndex="@(rssItemsList.IndexOf(rssItemsList.FirstOrDefault()) + 1)" 
+                           asp-route-titleToSearch="@titleToSearch" 
+                           asp-route-pageSize="@pageSize" 
+                           asp-route-linkToRss="@linkToRss"/>
                 </div>
             </div>
         </div>
@@ -98,7 +107,12 @@
     <div class="text-center">
         <ul class="pagination">
             <li>
-                <a class="btn btn-default @prevDisabled" asp-action="Index" asp-route-pageIndex="@(rssItemsList.IndexOf(rssItemsList.FirstOrDefault()) + 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" asp-route-linkToRss="@linkToRss">
+                <a class="btn btn-default @prevDisabled" 
+                   asp-action="Index" 
+                   asp-route-pageIndex="@(rssItemsList.IndexOf(rssItemsList.FirstOrDefault()) + 1)" 
+                   asp-route-titleToSearch="@titleToSearch" 
+                   asp-route-pageSize="@pageSize" 
+                   asp-route-linkToRss="@linkToRss">
                     <span>
                         &laquo;
                     </span>
@@ -106,7 +120,11 @@
             </li>
 
             <li>
-                <a class="btn btn-default @prevDisabled" asp-action="Index" asp-route-pageIndex="@(pageIndex - 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" asp-route-linkToRss="@linkToRss">
+                <a class="btn btn-default @prevDisabled" 
+                   asp-action="Index" asp-route-pageIndex="@(pageIndex - 1)" 
+                   asp-route-titleToSearch="@titleToSearch" 
+                   asp-route-pageSize="@pageSize" 
+                   asp-route-linkToRss="@linkToRss">
                     <span>
                         &lt;
                     </span>
@@ -119,7 +137,12 @@
                 if (i == Model.PageIndex - 1)
                 {
                     <li class="@isActive">
-                        <a class="btn btn-default" asp-action="Index" asp-route-pageIndex="@(pageIndex - 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" asp-route-linkToRss="@linkToRss">
+                        <a class="btn btn-default" 
+                           asp-action="Index" 
+                           asp-route-pageIndex="@(pageIndex - 1)" 
+                           asp-route-titleToSearch="@titleToSearch" 
+                           asp-route-pageSize="@pageSize" 
+                           asp-route-linkToRss="@linkToRss">
                             @i
                         </a>
                     </li>
@@ -127,7 +150,12 @@
                 if (i == pageIndex)
                 {
                     <li>
-                        <a class="btn btn-default active" asp-action="Index" asp-route-pageIndex="@(pageIndex)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" asp-route-linkToRss="@linkToRss">
+                        <a class="btn btn-default active" 
+                           asp-action="Index" 
+                           asp-route-pageIndex="@(pageIndex)" 
+                           asp-route-titleToSearch="@titleToSearch" 
+                           asp-route-pageSize="@pageSize"
+                           asp-route-linkToRss="@linkToRss">
                             @i
                         </a>
                     </li>
@@ -135,7 +163,12 @@
                 if (i == pageIndex + 1)
                 {
                     <li>
-                        <a class="btn btn-default" asp-action="Index" asp-route-pageIndex="@(pageIndex + 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" asp-route-linkToRss="@linkToRss">
+                        <a class="btn btn-default" 
+                           asp-action="Index" 
+                           asp-route-pageIndex="@(pageIndex + 1)" 
+                           asp-route-titleToSearch="@titleToSearch" 
+                           asp-route-pageSize="@pageSize" 
+                           asp-route-linkToRss="@linkToRss">
                             @i
                         </a>
                     </li>
@@ -143,7 +176,12 @@
                 if (i == pageIndex + 1 && i == 2 && totalPages > 2)
                 {
                     <li>
-                        <a class="btn btn-default" asp-action="Index" asp-route-pageIndex="@(pageIndex + 2)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" asp-route-linkToRss="@linkToRss">
+                        <a class="btn btn-default" 
+                           asp-action="Index" 
+                           asp-route-pageIndex="@(pageIndex + 2)" 
+                           asp-route-titleToSearch="@titleToSearch" 
+                           asp-route-pageSize="@pageSize" 
+                           asp-route-linkToRss="@linkToRss">
                             @(i + 1)
                         </a>
                     </li>
@@ -151,7 +189,12 @@
                 if (i == pageIndex - 2 && i == totalPages - 2)
                 {
                     <li>
-                        <a class="btn btn-default" asp-action="Index" asp-route-pageIndex="@(pageIndex - 2)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" asp-route-linkToRss="@linkToRss">
+                        <a class="btn btn-default" 
+                           asp-action="Index" 
+                           asp-route-pageIndex="@(pageIndex - 2)" 
+                           asp-route-titleToSearch="@titleToSearch" 
+                           asp-route-pageSize="@pageSize" 
+                           asp-route-linkToRss="@linkToRss">
                             @(i)
                         </a>
                     </li>
@@ -159,7 +202,12 @@
             }
 
             <li>
-                <a class="btn btn-default @nextDisabled" asp-action="Index" asp-route-pageIndex="@(pageIndex + 1)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" asp-route-linkToRss="@linkToRss">
+                <a class="btn btn-default @nextDisabled" 
+                   asp-action="Index" 
+                   asp-route-pageIndex="@(pageIndex + 1)" 
+                   asp-route-titleToSearch="@titleToSearch" 
+                   asp-route-pageSize="@pageSize" 
+                   asp-route-linkToRss="@linkToRss">
                     <span>
                         &gt;
                     </span>
@@ -167,7 +215,12 @@
             </li>
 
             <li>
-                <a class="btn btn-default @nextDisabled" asp-action="Index" asp-route-pageIndex="@(totalPages)" asp-route-titleToSearch="@titleToSearch" asp-route-pageSize="@pageSize" asp-route-linkToRss="@linkToRss">
+                <a class="btn btn-default @nextDisabled" 
+                   asp-action="Index" 
+                   asp-route-pageIndex="@(totalPages)" 
+                   asp-route-titleToSearch="@titleToSearch" 
+                   asp-route-pageSize="@pageSize" 
+                   asp-route-linkToRss="@linkToRss">
                     <span>
                         &raquo;
                     </span>
